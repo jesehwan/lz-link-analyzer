@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#echo "$1" | grep -o 'clickenc=[^&]*' | sed 's/clickenc=//' | python3 -c "import sys, urllib.parse; print(urllib.parse.unquote(sys.stdin.read().strip()))"
+node dist/decompress.js `echo "$1" | grep -o 'clickenc=[^&]*' | sed 's/clickenc=//' | python3 -c "import sys, urllib.parse; print(urllib.parse.unquote(urllib.parse.unquote(sys.stdin.read().strip())))" | grep -o 'q=[^&]*' | cut -d'=' -f2`
+

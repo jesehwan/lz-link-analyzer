@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 Link Analyzer - 클릭 추적 링크 분석기</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🔍 Link Analyzer</h1>
+            <p>광고 클릭 추적 링크를 분석하여 숨겨진 데이터를 추출합니다</p>
+        </header>
+
+        <main class="main">
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="urlInput">분석할 링크 URL을 입력하세요:</label>
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="urlInput" 
+                            placeholder="https://msft-ssp-apac.adnxs.com/click2?e=..."
+                            rows="3"
+                        ></textarea>
+                        <button id="analyzeBtn" class="analyze-btn">
+                            <span class="btn-text">분석하기</span>
+                            <div class="spinner" style="display: none;"></div>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="sample-links">
+                    <h3>💡 샘플 링크로 테스트:</h3>
+                    <button class="sample-btn" data-sample="1">샘플 링크 1</button>
+                    <button class="sample-btn" data-sample="2">샘플 링크 2</button>
+                    <button class="sample-btn" data-sample="3">샘플 링크 3</button>
+                </div>
+            </div>
+
+            <div id="results" class="results-section" style="display: none;">
+                <h2>📊 분석 결과</h2>
+                
+                <div class="result-tabs">
+                    <button class="tab-btn active" data-tab="summary">요약</button>
+                    <button class="tab-btn" data-tab="detailed">상세 데이터</button>
+                    <button class="tab-btn" data-tab="raw">원본 데이터</button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- 요약 탭 -->
+                    <div id="summary-tab" class="tab-pane active">
+                        <div class="summary-cards">
+                            <div class="card">
+                                <h3>🎯 최종 목적지</h3>
+                                <p id="finalDestination">-</p>
+                                <a id="finalDestinationLink" href="#" target="_blank" style="display: none;">링크 열기</a>
+                            </div>
+                            
+                            <div class="card">
+                                <h3>💰 광고 정보</h3>
+                                <div class="info-grid">
+                                    <div>입찰가: <span id="bidPrice">-</span></div>
+                                    <div>통화: <span id="currency">-</span></div>
+                                    <div>채널: <span id="channel">-</span></div>
+                                    <div>언어: <span id="userLang">-</span></div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <h3>📈 성과 지표</h3>
+                                <div class="info-grid">
+                                    <div>예측 클릭률: <span id="pctr">-</span></div>
+                                    <div>CPC: <span id="cpc">-</span></div>
+                                    <div>경쟁 타입: <span id="competition">-</span></div>
+                                    <div>요청 시간: <span id="requestTime">-</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 상세 데이터 탭 -->
+                    <div id="detailed-tab" class="tab-pane">
+                        <div class="data-section">
+                            <h3>🔗 디코딩된 URL</h3>
+                            <div class="code-block">
+                                <pre id="decodedUrl">-</pre>
+                            </div>
+                        </div>
+                        
+                        <div class="data-section">
+                            <h3>🗜️ 압축된 문자열</h3>
+                            <div class="code-block">
+                                <pre id="compressedString">-</pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 원본 데이터 탭 -->
+                    <div id="raw-tab" class="tab-pane">
+                        <div class="data-section">
+                            <h3>📄 전체 JSON 데이터</h3>
+                            <div class="code-block">
+                                <pre><code id="rawJson" class="language-json">-</code></pre>
+                            </div>
+                            <button id="copyJson" class="copy-btn">JSON 복사</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="error" class="error-section" style="display: none;">
+                <h2>❌ 오류 발생</h2>
+                <p id="errorMessage"></p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>🛠️ 광고 투명성을 위한 링크 분석 도구 | 교육 목적으로만 사용하세요</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
