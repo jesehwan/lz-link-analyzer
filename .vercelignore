@@ -3,6 +3,8 @@ node_modules
 
 # Build outputs  
 dist
+# Keep lib directory for serverless functions
+!lib
 
 # Development files
 src

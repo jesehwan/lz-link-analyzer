@@ -1,4 +1,4 @@
-const { LzDecompressor } = require('../dist/decompressor');
+const { LzDecompressor } = require('../lib/decompressor');
 
 module.exports = async (req, res) => {
     // CORS 헤더 설정
