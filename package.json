@@ -10,7 +10,7 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "build": "tsc",
-    "vercel-build": "npm run build",
+    "vercel-build": "echo 'Building for Vercel...' && npm run build && echo 'Build complete!'",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "keywords": [
